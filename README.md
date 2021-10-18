@@ -1,6 +1,6 @@
-# RubicMetrics
+# RubicMetrics, static webpage monitoring metrics from rubic.exchange
 
-### Static webpage monitoring metrics from rubic.exchange
+### 
 
 
 Notes on data consistency
