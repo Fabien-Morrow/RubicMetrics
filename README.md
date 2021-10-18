@@ -2,7 +2,27 @@
 
 Static webpage monitoring metrics from rubic.exchange
 
+-----------------
+
 notes on holders.csv
+
+* date
+* status : H = historical values ; S = scrapped on time ; I = missed so interpolated
+* price
+* total_adresses : total adresses on both chains
+* var_total_adresses : daily variation between today and yesterday
+* eth_adresses : total adresses Ethereum
+* var_eth_adresses : daily variation between today and yesterday
+* bsc_adresses : total adresses Binance Smart Chain
+* var_bsc_adresses : daily variation between today and yesterday
+* matic_adresses : total adresses on Polygon
+* var_matic_adresses : daily variation between today and yesterday
+* instant_trades : Cumulated daily swaps volume on rubic.exchange
+* var_instant_trades : daily variation between today and yesterday
+* bridges : Cumulated daily bridges volume on rubic.exchange, including crosschains swaps
+* var_bridges : daily variation between today and yesterday
+
+-----------------
 
 - I've started monitor eth adresses 27/07/2021
 - I monitor total on 3 chains since 31/08/2021
@@ -21,4 +41,4 @@ Finally :
 - Before 30/08/21, theses are the real eth adresses
 - Between 31/08/21 and 20/09/2021 all adresses on all chains are approximations, only total on both 3 chains is real.
 - After 20/09/21, accurate adresses on both 3 chains daily
-- 
+
