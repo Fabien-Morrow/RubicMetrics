@@ -2,7 +2,7 @@
 
 ### 
 
-This is personnal project. Just wanted to have a place to monitor theses metrics and share them. I'm not dev, I'm learning HTML, js and bash while building this project.
+This is personnal project. Just wanted to have a place to monitor theses metrics and share them. I'm not dev, I'm learning HTML, js and bash while building this project. I don't want to have a db and php for doin that too. Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux).
 
 Data collected, especially historic ones may contains errors.
 
