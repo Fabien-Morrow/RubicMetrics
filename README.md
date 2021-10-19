@@ -1,4 +1,4 @@
-# RubicMetrics, static webpage monitoring metrics from rubic.exchange
+# RubicMetrics, unofficial static webpage monitoring metrics from rubic.exchange
 
 ### 
 
