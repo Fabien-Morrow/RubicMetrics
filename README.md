@@ -2,6 +2,12 @@
 
 ### 
 
+This is personnal project. Just wanted to have a place to monitor theses metrics and share them. I'm not dev, I'm learning HTML, js and bash while building this project.
+
+Data collected, especially historic ones may contains errors.
+
+
+-----------------
 
 Notes on data consistency
 
