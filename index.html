@@ -1,0 +1,344 @@
+<!doctype html>
+
+<! -- -->
+    <html lang="en" class="no-js">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rubic metrics</title>
+        <meta name="description" content="Homemade Metrics for RBC token and rubic.exchange ">
+
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="rubicmetrics.css">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="papaparse.min.js"></script>
+
+        <script src="script2.js"></script>
+
+
+    </head>
+
+    <body>
+        <header>
+            <div id="header">
+                <div class="socialButtons">
+                    <a class="facebook" target="_blank" href="https://www.facebook.com/RubicDEX/"><img src="https://rubic.exchange/assets/images/contacts/fb.svg" alt="Facebook"></a>
+                    <a class="telegram" target="_blank" href="https://t.me/cryptorubic_chat"><img src="https://rubic.exchange/assets/images/contacts/telegram.svg" alt="Telegram"></a>
+                    <a class="youtube" target="_blank" href="https://cryptorubic.medium.com/"><img src="https://rubic.exchange/assets/images/contacts/medium.svg" alt="Medium" width="22" height="20"></a>
+                    <a class="twitter" target="_blank" href="https://twitter.com/CryptoRubic">
+                        <img src="https://rubic.exchange/assets/images/contacts/twitter.svg" alt="Twitter">
+                    </a>
+                </div>
+                <div id="mobileMenuToggle" title="Menu">M</div>
+                <a href="/" id="mobileLogo">Rubic metrics</a>
+                <div id="headerLeft">
+                    <div id="menuToggle">&equiv;</div>
+                </div>
+                <div id="headerRight">
+                    <nav>
+                        <ul>
+                            <li><a href="/">Home</a>
+                            <li><a rel="nofollow" target="_blank" href="https://rubic.exchange/">rubic.exchange</a>
+                            <li><a rel="nofollow" target="_blank" href="https://rubic.finance/">rubic.finance</a>
+                            <li><a rel="nofollow" target="_blank" href="https://www.coingecko.com/en/coins/rubic">Rubic on CoinGecko</a>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="wrapall">
+            <div id="sidebar">
+                <div id="stickThis">
+                    <div id="sidebarContent">
+                        <a id="logo" href="https://github.com/Fabien-Morrow/RubicMetrics">Rubic metrics</a>
+                        <aside>
+                            <div>Price</div>
+                            <div>Swaps daily</div>
+                            <div>Bridge daily</div>
+                            <div>Swaps cumulated</div>
+                            <div>Bridge cumulated</div>
+                            <div>Total adresses</div>
+                            <div>Cumulated adresses</div>
+                            <div>Holders per chain</div>
+                            <a id="back2TopLink" class="back2Top" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a>
+                        </aside>
+                    </div>
+                </div>
+                <div id="stick-here"></div>
+            </div>
+            <div id="main">
+                <section id="page">
+                    <main>
+                        <article>
+                            <h1>Total adresses on both chains holding RBC</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="totalAdresses"></canvas>
+                                <div>
+                                    <input id="totalAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAdresses.id, this.value)">
+                                    <input id="totalAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAdresses.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(totalAdresses.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of total adresses on both chains holding RBC</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="totalAdressesVar"></canvas>
+                                <div>
+                                    <input id="totalAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAdressesVar.id, this.value)">
+                                    <input id="totalAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAdressesVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(totalAdressesVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Cumulated adresses on both chains</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="adressesByChains"></canvas>
+                                <div>
+                                    <input id="adressesByChainsRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(adressesByChains.id, this.value)">
+                                    <input id="adressesByChainsRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(adressesByChains.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(adressesByChains.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Adresses holding RBC on Ethereum</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="ethAdresses"></canvas>
+                                <div>
+                                    <input id="ethAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAdresses.id, this.value)">
+                                    <input id="ethAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAdresses.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(ethAdresses.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of adresses holding RBC on Ethereum</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="ethAdressesVar"></canvas>
+                                <div>
+                                    <input id="ethAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAdressesVar.id, this.value)">
+                                    <input id="ethAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAdressesVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(ethAdressesVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                            <h1>Adresses holding RBC on Binance Smart Chain</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="bscAdresses"></canvas>
+                                <div>
+                                    <input id="bscAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAdresses.id, this.value)">
+                                    <input id="bscAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAdresses.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(bscAdresses.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of adresses holding RBC on Binance Smart Chain</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="bscAdressesVar"></canvas>
+                                <div>
+                                    <input id="bscAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAdressesVar.id, this.value)">
+                                    <input id="bscAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAdressesVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(bscAdressesVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Adresses holding RBC on Polygon</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="maticAdresses"></canvas>
+                                <div>
+                                    <input id="maticAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAdresses.id, this.value)">
+                                    <input id="maticAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAdresses.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(maticAdresses.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of adresses holding RBC on Polygon</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="maticAdressesVar"></canvas>
+                                <div>
+                                    <input id="maticAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAdressesVar.id, this.value)">
+                                    <input id="maticAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAdressesVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(maticAdressesVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Volumeexchange instantswaps cumulated</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="instantSwapsDaily"></canvas>
+                                <div>
+                                    <input id="instantSwapsDailyRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(instantSwapsDaily.id, this.value)">
+                                    <input id="instantSwapsDailyRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(instantSwapsDaily.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDaily.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of Volumeexchange instantswaps</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="instantSwapsDailyVar"></canvas>
+                                <div>
+                                    <input id="instantSwapsDailyVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(instantSwapsDailyVar.id, this.value)">
+                                    <input id="instantSwapsDailyVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(instantSwapsDailyVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(instantSwapsDailyVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Volumeexchange bridgecrosschain cumulated</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="bridgeCrossChainDaily"></canvas>
+                                <div>
+                                    <input id="bridgeCrossChainDailyRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bridgeCrossChainDaily.id, this.value)">
+                                    <input id="bridgeCrossChainDailyRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bridgeCrossChainDaily.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                        <article>
+                            <h1>Daily variations of Volumeexchange bridgecrosschain</h1>
+                            <div class="chart-container">
+                                <canvas class="chart" id="bridgeCrossChainDailyVar"></canvas>
+                                <div>
+                                    <input id="bridgeCrossChainDailyVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bridgeCrossChainDailyVar.id, this.value)">
+                                    <input id="bridgeCrossChainDailyVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bridgeCrossChainDailyVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id)">max</button>
+
+                                </div>
+                            </div>
+                        </article>
+                    </main>
+                    <footer>
+                        <p>Thx to <a rel="nofollow" href="https://html5-templates.com/preview/sticky-sidebar.html" target="_blank">HTML5&nbsp;Templates</a> helping my very low frontend skillz</p>
+                    </footer>
+                </section>
+            </div>
+        </div>
+        <script src="rubicgraphs.js"></script>
+    </body>
+
+    </html>
