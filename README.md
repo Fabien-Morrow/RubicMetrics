@@ -9,7 +9,7 @@ Notes on data consistency
 * I monitor total on 3 chains since 31/08/2021
 * I monitor each adresses on each chain since 20/09/2021
 * Eth adresses from 25 sept 2020 to 30/06/2021 come from bloxy
-* price com from bloxy and from coingecko from 26 june to 26 july
+* price come from bloxy and from coingecko from 26 june to 26 july
 
 So I've made some approximation on stats between 31/08/21 and 20/09/2021, with linear interpolation (flemme de faire mieux...) :
 * 1 to 130 holders between 28/08 (estimated token release) and 20/09 on Polygon is purely linear interpolation
