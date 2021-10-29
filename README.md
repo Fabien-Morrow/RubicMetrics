@@ -2,11 +2,21 @@
 
 ### 
 
-This is personnal project. Just wanted to have a place to monitor theses metrics and share them. I'm not dev, I'm learning HTML, js and bash while building this project. I don't want to have a db and php for doin that too. Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux).
+FAQ :
+* ** What is RubicMetrics ?**
+* I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it require low tech : no server, no db, etc. 
 
-Data collected, especially historic ones may contains errors.
+* ** Are you member of Rubic team ?**
+* No.
 
+* ** Why no PHP / bootstrap / jquery...**
+* I'm not dev, I'm learning HTML, js and bash while building this project. Also I don't like the idea to include such heavy libraries to build a page as simple as mine.
 
+* ** where data come from ?** 
+* Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.
+
+* ** I've too much cubes, can I unload some of my bags on you ? **
+* 0x3af08f4Eb37F0CA8dAFA33b59f75b962F7e5cE66
 -----------------
 
 Notes on data consistency
@@ -36,14 +46,14 @@ notes on holders.csv structure
 * date
 * status : H = historical values ; S = scrapped on time ; I = missed so interpolated
 * price
-* total_adresses : total adresses on both chains
+* total_addresses : total addresses on both chains
 * var_total_adresses : daily variation between today and yesterday
-* eth_adresses : total adresses Ethereum
-* var_eth_adresses : daily variation between today and yesterday
-* bsc_adresses : total adresses Binance Smart Chain
-* var_bsc_adresses : daily variation between today and yesterday
-* matic_adresses : total adresses on Polygon
-* var_matic_adresses : daily variation between today and yesterday
+* eth_addresses : total addresses Ethereum
+* var_eth_addresses : daily variation between today and yesterday
+* bsc_addresses : total addresses Binance Smart Chain
+* var_bsc_addresses : daily variation between today and yesterday
+* matic_addresses : total addresses on Polygon
+* var_matic_addresses : daily variation between today and yesterday
 * instant_trades : Cumulated daily swaps volume on rubic.exchange
 * var_instant_trades : daily variation between today and yesterday
 * bridges : Cumulated daily bridges volume on rubic.exchange, including crosschains swaps
