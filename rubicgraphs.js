@@ -1,10 +1,6 @@
-// theses globals variables will contain data from csv
-// used for graph updates, their values remain constant after feeding
+// this global variable will contain data from csv
+// used for graph updates, his value remain constant after feeding
 let original_data = new Map();
-
-let eth_adressesData = [];
-let bsc_adressesData = [];
-let matic_adressesData = [];
 
 const HTMLCollectionlistCharts = document.getElementsByClassName("chart");
 const arrayHTMLCollectionlistCharts = Array.from(HTMLCollectionlistCharts);
@@ -22,157 +18,197 @@ for (let chartCanvasId of listCharts) {
 }
 
 let colors = {
-	total_adresses: 'rgba(0, 0, 0, 0.5)',
-	eth_adresses: 'rgba(28, 28, 225, 0.7)',
-	bsc_adresses: 'rgba(251, 218, 60, 0.7)',
-	matic_adresses: 'rgba(130, 71, 229, 0.7)',
+	rbc: 'rgba(74, 169, 86, 0.7)',
+	eth: 'rgba(28, 28, 225, 0.7)',
+	bsc: 'rgba(251, 218, 60, 0.7)',
+	matic: 'rgba(130, 71, 229, 0.7)',
+    volume: 'rgba(200, 200, 200, 0.7)',
 
 };
 
+let graphOptions = {
+    scales: {
+      xAxes: [{
+          type: 'time',
+        display: true,
+        gridLines: {
+          display: true,
+          color: "#888888",
+        },
+      }],
+      yAxes: [{
+        display: true,
+        gridLines: {
+          display: true,
+          color: "#888888",
+        },
+      }]
+    }
+				  };
+
 // creating every chart with specific options for each
 
-charts.get("totalAdresses").chart = new Chart("totalAdresses", {
-                  type: 'line',
+charts.get("totalAddresses").chart = new Chart("totalAddresses", {
+                type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Total adresses on both chains holding RBC',
+                          label: 'Total addresses on both chains holding RBC',
                           data: [],
-						  id: 'total_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.rbc,
+						  id: 'total_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
-                  }
+                  },
 });
 
-charts.get("totalAdressesVar").chart = new Chart("totalAdressesVar", {
+charts.get("totalAddressesVar").chart = new Chart("totalAddressesVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Daily variations of total adresses on both chains holding RBC',
+                          label: 'Daily variations of total addresses on both chains holding RBC',
                           data: [],
-						  id: 'var_total_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.rbc,
+						  id: 'var_total_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
-                  }
+                  },
 });
 
-charts.get("adressesByChains").chart = new Chart("adressesByChains", {
+charts.get("addressesByChains").chart = new Chart("addressesByChains", {
                   type: 'line',
 				  options: {
-					  scales: {
-						  yAxes: [{
-							  ticks: { beginAtZero: true },
-							  stacked: true
-						  }],
-						  xAxes : [{
-							  stacked: true
-						  }]
-					  }
+    scales: {
+      xAxes: [{
+          type: 'time',
+        display: true,
+        gridLines: {
+          display: true,
+          color: "#888888",
+        },
+      }],
+      yAxes: [{
+        display: true,
+        stacked: true,
+        gridLines: {
+          display: true,
+          color: "#888888",
+        },
+      }]
+    }
 				  },
                   data: {
                       labels: [],
                       datasets: [{
-							label: 'Eth adresses',
+							label: 'Eth addresses',
 							data: [],
-							backgroundColor: colors.eth_adresses,
-							id: 'eth_adresses',
+							backgroundColor: colors.eth,
+							id: 'eth_addresses',
 							},
 							{
-							label: 'Bsc adresses',
+							label: 'Bsc addresses',
 							data: [],
-							backgroundColor: colors.bsc_adresses,
-							id: 'bsc_adresses',
+							backgroundColor: colors.bsc,
+							id: 'bsc_addresses',
 							},
 							{
-							label: 'Matic adresses',
+							label: 'Matic addresses',
 							data: [],
-							backgroundColor: colors.matic_adresses,
-							id: 'matic_adresses',
+							backgroundColor: colors.matic,
+							id: 'matic_addresses',
 							}
 							]
                   }
 });
 
-charts.get("ethAdresses").chart = new Chart("ethAdresses", {
+charts.get("ethAddresses").chart = new Chart("ethAddresses", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Adresses holding RBC on Ethereum',
+                          label: 'Addresses holding RBC on Ethereum',
                           data: [],
-						  backgroundColor: colors.eth_adresses,
-						  id: 'eth_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.eth,
+						  id: 'eth_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
 });
 
-charts.get("ethAdressesVar").chart = new Chart("ethAdressesVar", {
+charts.get("ethAddressesVar").chart = new Chart("ethAddressesVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Daily variations of adresses holding RBC on Ethereum',
+                          label: 'Daily variations of addresses holding RBC on Ethereum',
                           data: [],
-						  backgroundColor: colors.eth_adresses,
-						  id: 'var_eth_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.eth,
+						  id: 'var_eth_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
 });
 
-charts.get("bscAdresses").chart = new Chart("bscAdresses", {
+charts.get("bscAddresses").chart = new Chart("bscAddresses", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Adresses holding RBC on Binance Smart Chain',
+                          label: 'Addresses holding RBC on Binance Smart Chain',
                           data: [],
-						  backgroundColor: colors.bsc_adresses,
-						  id: 'bsc_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.bsc,
+						  id: 'bsc_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
 });
 
-charts.get("bscAdressesVar").chart = new Chart("bscAdressesVar", {
+charts.get("bscAddressesVar").chart = new Chart("bscAddressesVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Daily variations of adresses holding RBC on Binance Smart Chain',
+                          label: 'Daily variations of addresses holding RBC on Binance Smart Chain',
                           data: [],
-						  backgroundColor: colors.bsc_adresses,
-						  id: 'var_bsc_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.bsc,
+						  id: 'var_bsc_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
 });
 
-charts.get("maticAdresses").chart = new Chart("maticAdresses", {
+charts.get("maticAddresses").chart = new Chart("maticAddresses", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Adresses holding RBC on Polygon',
+                          label: 'Addresses holding RBC on Polygon',
                           data: [],
-						  backgroundColor: colors.matic_adresses,
-						  id: 'matic_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.matic,
+						  id: 'matic_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
 });
 
-charts.get("maticAdressesVar").chart = new Chart("maticAdressesVar", {
+charts.get("maticAddressesVar").chart = new Chart("maticAddressesVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
-                          label: 'Daily variations of adresses holding RBC on Polygon',
+                          label: 'Daily variations of addresses holding RBC on Polygon',
                           data: [],
-						  backgroundColor: colors.matic_adresses,
-						  id: 'var_matic_adresses', // key to access theses data in original_data map for updates
+						  backgroundColor: colors.matic,
+						  id: 'var_matic_addresses', // key to access theses data in original_data map for updates
                       },
 					  ]
                   }
@@ -180,11 +216,13 @@ charts.get("maticAdressesVar").chart = new Chart("maticAdressesVar", {
 
 charts.get("instantSwapsDaily").chart = new Chart("instantSwapsDaily", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
                           label: 'Cumulated volume daily swaps on rubic.exchange',
                           data: [],
+                          backgroundColor: colors.volume,
 						  id: 'instant_trades', // key to access theses data in original_data map for updates
                       },
 					  ]
@@ -193,11 +231,13 @@ charts.get("instantSwapsDaily").chart = new Chart("instantSwapsDaily", {
 
 charts.get("instantSwapsDailyVar").chart = new Chart("instantSwapsDailyVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
                           label: 'Cumulated volume daily swaps on rubic.exchange',
                           data: [],
+                          backgroundColor: colors.volume,
 						  id: 'var_instant_trades', // key to access theses data in original_data map for updates
                       },
 					  ]
@@ -206,11 +246,13 @@ charts.get("instantSwapsDailyVar").chart = new Chart("instantSwapsDailyVar", {
 
 charts.get("bridgeCrossChainDaily").chart = new Chart("bridgeCrossChainDaily", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
                           label: 'Cumulated volume daily swaps on rubic.exchange',
                           data: [],
+                          backgroundColor: colors.volume,
 						  id: 'bridges', // key to access theses data in original_data map for updates
                       },
 					  ]
@@ -219,11 +261,13 @@ charts.get("bridgeCrossChainDaily").chart = new Chart("bridgeCrossChainDaily", {
 
 charts.get("bridgeCrossChainDailyVar").chart = new Chart("bridgeCrossChainDailyVar", {
                   type: 'line',
+				  options: graphOptions,
                   data: {
                       labels: [],
                       datasets: [{
                           label: 'Cumulated volume daily swaps on rubic.exchange',
                           data: [],
+                          backgroundColor: colors.volume,
 						  id: 'var_bridges', // key to access theses data in original_data map for updates
                       },
 					  ]
@@ -304,7 +348,7 @@ Papa.parse("https://raw.githubusercontent.com/Fabien-Morrow/RubicMetrics/main/ru
 
 		// filling the charts
 		for (let chartCanvasId of listCharts) {
-			console.log(charts.get(chartCanvasId).chart.chart.ctx.canvas.getContext("2d"));
+			//console.log(charts.get(chartCanvasId).chart.chart.ctx.canvas.getContext("2d"));
 			var image2 = new Image();
 			image2.src = "back-graph.png";
 			charts.get(chartCanvasId).chart.chart.ctx.canvas.getContext("2d").drawImage(image2, 0, 0, 500, 500);

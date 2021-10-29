@@ -1,43 +1,26 @@
+
+
 <!doctype html>
-
-<! -- -->
-    <html lang="en" class="no-js">
-
+<html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rubic metrics</title>
         <meta name="description" content="Homemade Metrics for RBC token and rubic.exchange ">
-
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="rubicmetrics.css">
-
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="papaparse.min.js"></script>
-
-        <script src="script2.js"></script>
-
-
     </head>
-
-    <body>
+    <body class="toggleAddressesMenu">
         <header>
             <div id="header">
-                <div class="socialButtons">
-                    <a class="facebook" target="_blank" href="https://www.facebook.com/RubicDEX/"><img src="https://rubic.exchange/assets/images/contacts/fb.svg" alt="Facebook"></a>
-                    <a class="telegram" target="_blank" href="https://t.me/cryptorubic_chat"><img src="https://rubic.exchange/assets/images/contacts/telegram.svg" alt="Telegram"></a>
-                    <a class="youtube" target="_blank" href="https://cryptorubic.medium.com/"><img src="https://rubic.exchange/assets/images/contacts/medium.svg" alt="Medium" width="22" height="20"></a>
-                    <a class="twitter" target="_blank" href="https://twitter.com/CryptoRubic">
-                        <img src="https://rubic.exchange/assets/images/contacts/twitter.svg" alt="Twitter">
-                    </a>
-                </div>
-                <div id="mobileMenuToggle" title="Menu">M</div>
-                <a href="/" id="mobileLogo">Rubic metrics</a>
-                <div id="headerLeft">
-                    <div id="menuToggle">&equiv;</div>
-                </div>
-                <div id="headerRight">
+                <div class="header" id="addressesMenuToggle">Addresses</div>
+                <div class="header" id="addressesChainsMenuToggle">Chains</div>
+                <div class="header" id="volumesMenuToggle">Volumes</div>
+                <div class="header" id="fillerMenuToggle"></div>
+                <div class="header" id="Link">
                     <nav>
                         <ul>
                             <li><a href="/">Home</a>
@@ -47,212 +30,223 @@
                         </ul>
                     </nav>
                 </div>
+                <div class="header" id="MobileMenuToggle" title="Menu"><img src="links.svg" alt="Links"></div>
             </div>
         </header>
         <div id="wrapall">
-            <div id="sidebar">
-                <div id="stickThis">
-                    <div id="sidebarContent">
-                        <a id="logo" href="https://github.com/Fabien-Morrow/RubicMetrics">Rubic metrics</a>
-                        <aside>
-                            <div>Price</div>
-                            <div>Swaps daily</div>
-                            <div>Bridge daily</div>
-                            <div>Swaps cumulated</div>
-                            <div>Bridge cumulated</div>
-                            <div>Total adresses</div>
-                            <div>Cumulated adresses</div>
-                            <div>Holders per chain</div>
-                            <a id="back2TopLink" class="back2Top" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a>
-                        </aside>
-                    </div>
+            <div id="sidebarAddressesMenu">
+                <div id="sidebarContent">
+                    <a id="logo" href="https://github.com/Fabien-Morrow/RubicMetrics">Adresses</a>
+                    <aside>
+                        <div><a class="graphLink" href="#totalAddressesArticle">Total addresses</a></div>
+                        <div><a class="graphLink" href="#totalAddressesVarArticle">Total addresses : Daily var.</a></div>
+                        <div><a class="graphLink" href="#addressesByChainsArticle">Cumulated addresses</a></div>
+                        <div class="backToTopWrapper"><a class="backToTop graphLink" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a></div>
+                    </aside>
                 </div>
-                <div id="stick-here"></div>
+            </div>
+            <div id="sidebarAddressesChainsMenu">
+                <div id="sidebarContent">
+                    <a id="logo" href="https://github.com/Fabien-Morrow/RubicMetrics">Adresses by Chains</a>
+                    <aside>
+                        <div><a class="graphLink" href="#ethAddressesArticle">Addresses - Ethereum</a></div>
+                        <div><a class="graphLink" href="#ethAddressesVarArticle">Addresses - Ethereum : Daily var.</a></div>
+                        <div><a class="graphLink" href="#bscAddressesArticle">Addresses - BSC</a></div>
+                        <div><a class="graphLink" href="#bscAddressesVarArticle">Addresses - BSC : Daily var.</a></div>
+                        <div><a class="graphLink" href="#maticAddressesArticle">Addresses - Polygon</a></div>
+                        <div><a class="graphLink" href="#maticAddressesVarArticle">Addresses - Polygon : Daily var.</a></div>
+                        <div class="backToTopWrapper"><a class="backToTop graphLink" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a></div>
+                    </aside>
+                </div>
+            </div>
+            <div id="sidebarVolumesMenu">
+                <div id="sidebarContent">
+                    <a id="logo" href="https://github.com/Fabien-Morrow/RubicMetrics">Volumes</a>
+                    <aside> 
+                        <div><a class="graphLink" href="#instantSwapsDailyArticle">Instant Swaps</a></div>
+                        <div><a class="graphLink" href="#instantSwapsDailyVarArticle">Instant Swaps : Daily var.</a></div>
+                        <div><a class="graphLink" href="#bridgeCrossChainDailyArticle">Bridges/Crosschains</a></div>
+                        <div><a class="graphLink" href="#bridgeCrossChainDailyVarArticle">Bridges/Crosschains : Daily var.</a></div>
+                        <div class="backToTopWrapper"><a class="backToTop graphLink" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a></div>
+                    </aside>
+                </div>
             </div>
             <div id="main">
                 <section id="page">
                     <main>
-                        <article>
-                            <h1>Total adresses on both chains holding RBC</h1>
+                        <article id="totalAddressesArticle">
+                            <div class="chartTitle"><h1>Total addresses on both chains holding RBC</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="totalAdresses"></canvas>
+                                <canvas class="chart" id="totalAddresses"></canvas>
                                 <div>
-                                    <input id="totalAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAdresses.id, this.value)">
-                                    <input id="totalAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAdresses.id, this.value)">
+                                    <input id="totalAddressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAddresses.id, this.value)">
+                                    <input id="totalAddressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAddresses.id, this.value)">
                                 </div>
-                                <div>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(totalAdresses.id)">max</button>
-
+                                <div class="chartButtonsContainer">
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 7)">7d</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 14)">14d</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 30)">30d</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 90)">90d</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 180)">180d</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id, 365)">1y</button>
+                                    <button class= "chartButton" onclick="selectRangeFromNow(totalAddresses.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of total adresses on both chains holding RBC</h1>
+                        <article id="totalAddressesVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of total addresses on both chains holding RBC</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="totalAdressesVar"></canvas>
+                                <canvas class="chart" id="totalAddressesVar"></canvas>
                                 <div>
-                                    <input id="totalAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAdressesVar.id, this.value)">
-                                    <input id="totalAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAdressesVar.id, this.value)">
+                                    <input id="totalAddressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalAddressesVar.id, this.value)">
+                                    <input id="totalAddressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalAddressesVar.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(totalAdressesVar.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(totalAddressesVar.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Cumulated adresses on both chains</h1>
+                        <article id="addressesByChainsArticle">
+                            <div class="chartTitle"><h1>Cumulated addresses on both chains</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="adressesByChains"></canvas>
+                                <canvas class="chart" id="addressesByChains"></canvas>
                                 <div>
-                                    <input id="adressesByChainsRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(adressesByChains.id, this.value)">
-                                    <input id="adressesByChainsRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(adressesByChains.id, this.value)">
+                                    <input id="addressesByChainsRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(addressesByChains.id, this.value)">
+                                    <input id="addressesByChainsRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(addressesByChains.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(adressesByChains.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(addressesByChains.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Adresses holding RBC on Ethereum</h1>
+                        <article id="ethAddressesArticle">
+                            <div class="chartTitle"><h1>Addresses holding RBC on Ethereum</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="ethAdresses"></canvas>
+                                <canvas class="chart" id="ethAddresses"></canvas>
                                 <div>
-                                    <input id="ethAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAdresses.id, this.value)">
-                                    <input id="ethAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAdresses.id, this.value)">
+                                    <input id="ethAddressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAddresses.id, this.value)">
+                                    <input id="ethAddressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAddresses.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(ethAdresses.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(ethAddresses.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of adresses holding RBC on Ethereum</h1>
+                        <article id="ethAddressesVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of addresses holding RBC on Ethereum</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="ethAdressesVar"></canvas>
+                                <canvas class="chart" id="ethAddressesVar"></canvas>
                                 <div>
-                                    <input id="ethAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAdressesVar.id, this.value)">
-                                    <input id="ethAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAdressesVar.id, this.value)">
+                                    <input id="ethAddressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(ethAddressesVar.id, this.value)">
+                                    <input id="ethAddressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(ethAddressesVar.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(ethAdressesVar.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(ethAddressesVar.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                            <h1>Adresses holding RBC on Binance Smart Chain</h1>
+                        <article id="bscAddressesArticle">
+                        <div class="chartTitle"><h1>Addresses holding RBC on Binance Smart Chain</h1></div>
+                        <div class="chart-container">
+                            <canvas class="chart" id="bscAddresses"></canvas>
+                            <div>
+                                <input id="bscAddressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAddresses.id, this.value)">
+                                <input id="bscAddressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAddresses.id, this.value)">
+                            </div>
+                            <div>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 7)">7d</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 14)">14d</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 30)">30d</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 90)">90d</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 180)">180d</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id, 365)">1y</button>
+                                <button onclick="selectRangeFromNow(bscAddresses.id)">max</button>
+                            </div>
+                        </div>
+                        </article>
+                        <article id="bscAddressesVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of addresses holding RBC on Binance Smart Chain</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="bscAdresses"></canvas>
+                                <canvas class="chart" id="bscAddressesVar"></canvas>
                                 <div>
-                                    <input id="bscAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAdresses.id, this.value)">
-                                    <input id="bscAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAdresses.id, this.value)">
+                                    <input id="bscAddressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAddressesVar.id, this.value)">
+                                    <input id="bscAddressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAddressesVar.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(bscAdresses.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(bscAddressesVar.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of adresses holding RBC on Binance Smart Chain</h1>
+                        <article id="maticAddressesArticle">
+                            <div class="chartTitle"><h1>Addresses holding RBC on Polygon</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="bscAdressesVar"></canvas>
+                                <canvas class="chart" id="maticAddresses"></canvas>
                                 <div>
-                                    <input id="bscAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(bscAdressesVar.id, this.value)">
-                                    <input id="bscAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(bscAdressesVar.id, this.value)">
+                                    <input id="maticAddressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAddresses.id, this.value)">
+                                    <input id="maticAddressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAddresses.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(bscAdressesVar.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(maticAddresses.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Adresses holding RBC on Polygon</h1>
+                        <article id="maticAddressesVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of addresses holding RBC on Polygon</h1></div>
                             <div class="chart-container">
-                                <canvas class="chart" id="maticAdresses"></canvas>
+                                <canvas class="chart" id="maticAddressesVar"></canvas>
                                 <div>
-                                    <input id="maticAdressesRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAdresses.id, this.value)">
-                                    <input id="maticAdressesRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAdresses.id, this.value)">
+                                    <input id="maticAddressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAddressesVar.id, this.value)">
+                                    <input id="maticAddressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAddressesVar.id, this.value)">
                                 </div>
                                 <div>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(maticAdresses.id)">max</button>
-
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(maticAddressesVar.id)">max</button>
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of adresses holding RBC on Polygon</h1>
-                            <div class="chart-container">
-                                <canvas class="chart" id="maticAdressesVar"></canvas>
-                                <div>
-                                    <input id="maticAdressesVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(maticAdressesVar.id, this.value)">
-                                    <input id="maticAdressesVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(maticAdressesVar.id, this.value)">
-                                </div>
-                                <div>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 7)">7d</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 14)">14d</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 30)">30d</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 90)">90d</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 180)">180d</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id, 365)">1y</button>
-                                    <button onclick="selectRangeFromNow(maticAdressesVar.id)">max</button>
-
-                                </div>
-                            </div>
-                        </article>
-                        <article>
-                            <h1>Volumeexchange instantswaps cumulated</h1>
+                        <article id="instantSwapsDailyArticle">
+                            <div class="chartTitle"><h1>rubic.exchange instantswaps cumulated</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="instantSwapsDaily"></canvas>
                                 <div>
@@ -267,12 +261,11 @@
                                     <button onclick="selectRangeFromNow(instantSwapsDaily.id, 180)">180d</button>
                                     <button onclick="selectRangeFromNow(instantSwapsDaily.id, 365)">1y</button>
                                     <button onclick="selectRangeFromNow(instantSwapsDaily.id)">max</button>
-
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of Volumeexchange instantswaps</h1>
+                        <article id="instantSwapsDailyVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of rubic.exchange instantswaps</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="instantSwapsDailyVar"></canvas>
                                 <div>
@@ -287,12 +280,11 @@
                                     <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 180)">180d</button>
                                     <button onclick="selectRangeFromNow(instantSwapsDailyVar.id, 365)">1y</button>
                                     <button onclick="selectRangeFromNow(instantSwapsDailyVar.id)">max</button>
-
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Volumeexchange bridgecrosschain cumulated</h1>
+                        <article id="bridgeCrossChainDailyArticle">
+                            <div class="chartTitle"><h1>rubic.exchange bridgecrosschain cumulated</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="bridgeCrossChainDaily"></canvas>
                                 <div>
@@ -307,12 +299,11 @@
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 180)">180d</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id, 365)">1y</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDaily.id)">max</button>
-
                                 </div>
                             </div>
                         </article>
-                        <article>
-                            <h1>Daily variations of Volumeexchange bridgecrosschain</h1>
+                        <article id="bridgeCrossChainDailyVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of rubic.exchange bridgecrosschain</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="bridgeCrossChainDailyVar"></canvas>
                                 <div>
@@ -327,18 +318,18 @@
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 180)">180d</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 365)">1y</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id)">max</button>
-
                                 </div>
                             </div>
                         </article>
                     </main>
                     <footer>
-                        <p>This unofficial webpage shares metrics scrapped by me, and is not part of the Rubic project.</p>
+                        <p><a rel="nofollow" href="https://github.com/Fabien-Morrow/RubicMetrics" target="_blank">Notes on the project and data</a></p>
                     </footer>
                 </section>
             </div>
         </div>
+        <script src="menus.js"></script>
         <script src="rubicgraphs.js"></script>
     </body>
+</html>
 
-    </html>
