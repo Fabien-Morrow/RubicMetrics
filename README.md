@@ -3,19 +3,19 @@
 ### 
 
 FAQ :
-* ** What is RubicMetrics ?**
+* **What is RubicMetrics ?**
 * I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it require low tech : no server, no db, etc. 
 
-* ** Are you member of Rubic team ?**
+* **Are you member of Rubic team ?**
 * No.
 
-* ** Why no PHP / bootstrap / jquery...**
+* **Why no PHP / bootstrap / jquery...**
 * I'm not dev, I'm learning HTML, js and bash while building this project. Also I don't like the idea to include such heavy libraries to build a page as simple as mine.
 
-* ** where data come from ?** 
+* **where data come from ?** 
 * Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.
 
-* ** I've too much cubes, can I unload some of my bags on you ? **
+* **I've too much cubes, can I unload some of my bags on you ? **
 * 0x3af08f4Eb37F0CA8dAFA33b59f75b962F7e5cE66
 -----------------
 
