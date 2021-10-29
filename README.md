@@ -41,7 +41,7 @@ Finally :
 
 -----------------
 
-notes on holders.csv structure
+notes on rubicmetrics.csv structure
 
 * date
 * status : H = historical values ; S = scrapped on time ; I = missed so interpolated
