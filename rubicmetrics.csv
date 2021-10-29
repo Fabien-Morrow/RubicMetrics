@@ -1,4 +1,4 @@
-date,status,price,total_adresses,var_total_adresses,eth_adresses,var_eth_adresses,bsc_adresses,var_bsc_adresses,matic_adresses,var_matic_adresses,instant_trades,var_instant_trades,bridges,var_bridges
+date,status,price,total_addresses,var_total_addresses,eth_addresses,var_eth_addresses,bsc_addresses,var_bsc_addresses,matic_addresses,var_matic_addresses,instant_trades,var_instant_trades,bridges,var_bridges
 2020-09-25T10:30:00Z,H,0.0,658,0,658,0,0,0,0,0,0,0,0,0
 2020-09-26T10:30:00Z,H,0.0,625,-33,625,-33,0,0,0,0,0,0,0,0
 2020-09-27T10:30:00Z,H,0.0,576,-49,576,-49,0,0,0,0,0,0,0,0
