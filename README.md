@@ -9,14 +9,22 @@ FAQ :
 * **Are you member of Rubic team ?**
 * No.
 
+* **Where can I contact you ?**
+* I'm Fabien on https://t.me/cryptorubic_chat
+
 * **Why no PHP / bootstrap / jquery...**
 * I'm not dev, I'm learning HTML, js and bash while building this project. Also I don't like the idea to include such heavy libraries to build a page as simple as mine.
 
 * **where data come from ?** 
 * Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.
 
+* **Can I re-use your work ? Licence ?**
+*  This work is licenced under "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE"
+
 * **I've too much cubes, can I unload some of my bags on you ?**
 * 0x3af08f4Eb37F0CA8dAFA33b59f75b962F7e5cE66
+
+
 -----------------
 
 Notes on data consistency
