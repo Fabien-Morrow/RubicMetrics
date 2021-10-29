@@ -29,7 +29,6 @@ let colors = {
 let graphOptions = {
     scales: {
       xAxes: [{
-          type: 'time',
         display: true,
         gridLines: {
           display: true,
@@ -83,7 +82,6 @@ charts.get("addressesByChains").chart = new Chart("addressesByChains", {
 				  options: {
     scales: {
       xAxes: [{
-          type: 'time',
         display: true,
         gridLines: {
           display: true,
@@ -341,9 +339,22 @@ Papa.parse("https://raw.githubusercontent.com/Fabien-Morrow/RubicMetrics/main/ru
 		// - id value in every chart
 
 		for (let field of rawrubicmetrics.meta.fields) {
+            if (field == "date") {
+                let options = {
+                    month: "long",
+                    day: "numeric",
+                    yeah: "numeric",
+                };
+                original_data.set(field, rawrubicmetrics.data.map(function(d) {
+                    date = new Date(d[field]);
+                    return date.toLocaleDateString('en-US', options);
+                }));
+            }
+            else {
 			original_data.set(field, rawrubicmetrics.data.map(function(d) {
 				return d[field];
 			}));
+            }
 		}
 
 		// filling the charts
