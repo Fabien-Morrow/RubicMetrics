@@ -4,7 +4,7 @@
 
 FAQ :
 * **What is RubicMetrics ?**
-* *I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it require low tech : no server, no db, etc. *
+* *I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it require low tech : no server, no db, etc.*
 
 * **Are you member of Rubic team ?**
 * *No.*
