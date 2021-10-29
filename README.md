@@ -15,7 +15,7 @@ FAQ :
 * **where data come from ?** 
 * Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.
 
-* **I've too much cubes, can I unload some of my bags on you ? **
+* **I've too much cubes, can I unload some of my bags on you ?**
 * 0x3af08f4Eb37F0CA8dAFA33b59f75b962F7e5cE66
 -----------------
 
