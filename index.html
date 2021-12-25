@@ -66,6 +66,8 @@
                         <div><a class="graphLink" href="#instantSwapsDailyVarArticle">Instant Swaps : Daily var.</a></div>
                         <div><a class="graphLink" href="#bridgeCrossChainDailyArticle">Bridges/Crosschains</a></div>
                         <div><a class="graphLink" href="#bridgeCrossChainDailyVarArticle">Bridges/Crosschains : Daily var.</a></div>
+                        <div><a class="graphLink" href="#totalVolumeArticle">Total volume</a></div>
+                        <div><a class="graphLink" href="#totalVolumeVarArticle">Total volume : Daily var.</a></div>
                         <div class="backToTopWrapper"><a class="backToTop graphLink" href="#">⮝&nbsp;Back to&nbsp;top&nbsp;⮝</a></div>
                     </aside>
                 </div>
@@ -245,7 +247,7 @@
                             </div>
                         </article>
                         <article id="instantSwapsDailyArticle">
-                            <div class="chartTitle"><h1>rubic.exchange instantswaps cumulated</h1></div>
+                            <div class="chartTitle"><h1>Total of rubic.exchange instantswaps</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="instantSwapsDaily"></canvas>
                                 <div>
@@ -283,7 +285,7 @@
                             </div>
                         </article>
                         <article id="bridgeCrossChainDailyArticle">
-                            <div class="chartTitle"><h1>rubic.exchange bridgecrosschain cumulated</h1></div>
+                            <div class="chartTitle"><h1>Total of rubic.exchange bridge/crosschainswaps</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="bridgeCrossChainDaily"></canvas>
                                 <div>
@@ -302,7 +304,7 @@
                             </div>
                         </article>
                         <article id="bridgeCrossChainDailyVarArticle">
-                            <div class="chartTitle"><h1>Daily variations of rubic.exchange bridgecrosschain</h1></div>
+                            <div class="chartTitle"><h1>Daily variations of rubic.exchange bridge/crosschainswaps</h1></div>
                             <div class="chart-container">
                                 <canvas class="chart" id="bridgeCrossChainDailyVar"></canvas>
                                 <div>
@@ -317,6 +319,44 @@
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 180)">180d</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id, 365)">1y</button>
                                     <button onclick="selectRangeFromNow(bridgeCrossChainDailyVar.id)">max</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="totalVolumeArticle">
+                            <div class="chartTitle"><h1>Cumulated volume on rubic.exchange</h1></div>
+                            <div class="chart-container">
+                                <canvas class="chart" id="totalVolume"></canvas>
+                                <div>
+                                    <input id="totalVolumeRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalVolume.id, this.value)">
+                                    <input id="totalVolumeRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalVolume.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(totalVolume.id)">max</button>
+                                </div>
+                            </div>
+                        </article>
+                        <article id="totalVolumeVarArticle">
+                            <div class="chartTitle"><h1>Daily variations of cumulated volume on rubic.exchange</h1></div>
+                            <div class="chart-container">
+                                <canvas class="chart" id="totalVolumeVar"></canvas>
+                                <div>
+                                    <input id="totalVolumeVarRangeStart" type="range" min="1" style="width: 100%;" oninput="updateMin(totalVolumeVar.id, this.value)">
+                                    <input id="totalVolumeVarRangeEnd" type="range" min="1" style="width: 100%;" oninput="updateMax(totalVolumeVar.id, this.value)">
+                                </div>
+                                <div>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 7)">7d</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 14)">14d</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 30)">30d</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 90)">90d</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 180)">180d</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id, 365)">1y</button>
+                                    <button onclick="selectRangeFromNow(totalVolumeVar.id)">max</button>
                                 </div>
                             </div>
                         </article>

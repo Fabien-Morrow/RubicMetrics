@@ -22,7 +22,10 @@ let colors = {
     eth: 'rgba(28, 28, 225, 0.7)',
     bsc: 'rgba(251, 218, 60, 0.7)',
     matic: 'rgba(130, 71, 229, 0.7)',
+    swaps: 'rgba(74, 169, 86, 0.7)',
+    bridges: 'rgba(251, 91, 22, 0.7)',
     volume: 'rgba(200, 200, 200, 0.7)',
+
 
 };
 
@@ -252,7 +255,7 @@ charts.get("instantSwapsDaily").chart = new Chart("instantSwapsDaily", {
     data: {
         labels: [],
         datasets: [{
-            label: 'Cumulated volume daily swaps on rubic.exchange',
+            label: 'Cumulated volume swaps on rubic.exchange',
             data: [],
             backgroundColor: colors.volume,
             id: 'instant_trades', // key to access theses data in original_data map for updates
@@ -266,7 +269,7 @@ charts.get("instantSwapsDailyVar").chart = new Chart("instantSwapsDailyVar", {
     data: {
         labels: [],
         datasets: [{
-            label: 'Cumulated volume daily swaps on rubic.exchange',
+            label: 'Daily volume of swaps on rubic.exchange',
             data: [],
             backgroundColor: colors.volume,
             id: 'var_instant_trades', // key to access theses data in original_data map for updates
@@ -280,7 +283,7 @@ charts.get("bridgeCrossChainDaily").chart = new Chart("bridgeCrossChainDaily", {
     data: {
         labels: [],
         datasets: [{
-            label: 'Cumulated volume daily swaps on rubic.exchange',
+            label: 'Cumulated volume bridges/crosschainswaps on rubic.exchange',
             data: [],
             backgroundColor: colors.volume,
             id: 'bridges', // key to access theses data in original_data map for updates
@@ -294,11 +297,107 @@ charts.get("bridgeCrossChainDailyVar").chart = new Chart("bridgeCrossChainDailyV
     data: {
         labels: [],
         datasets: [{
-            label: 'Cumulated volume daily swaps on rubic.exchange',
+            label: 'Daily volume of bridges/crosschainswaps on rubic.exchange',
             data: [],
             backgroundColor: colors.volume,
             id: 'var_bridges', // key to access theses data in original_data map for updates
         }, ]
+    }
+});
+
+charts.get("totalVolume").chart = new Chart("totalVolume", {
+    type: 'line',
+    options: {
+        scales: {
+            xAxes: [{
+                display: true,
+                gridLines: {
+                    display: true,
+                    color: "#888888",
+                },
+            }],
+            yAxes: [{
+                display: true,
+                stacked: true,
+                gridLines: {
+                    display: true,
+                    color: "#888888",
+                },
+                ticks: {
+                    callback: (value, index, values) => {
+                        return new Intl.NumberFormat('en-US', {
+                            style: 'decimal'
+                        }).format(value);
+                    }
+                },
+            }]
+        }
+    },
+    data: {
+        labels: [],
+        datasets: [
+            {
+                label: 'Cumulated bridges/crosschainswaps volume on rubic.exchange',
+                data: [],
+                backgroundColor: colors.bridges,
+                id: 'bridges',
+            },
+            {
+                label: 'Cumulated swaps volume on rubic.exchange',
+                data: [],
+                backgroundColor: colors.swaps,
+                id: 'instant_trades',
+            },
+
+        ],
+    }
+});
+
+charts.get("totalVolumeVar").chart = new Chart("totalVolumeVar", {
+    type: 'line',
+    options: {
+        scales: {
+            xAxes: [{
+                display: true,
+                gridLines: {
+                    display: true,
+                    color: "#888888",
+                },
+            }],
+            yAxes: [{
+                display: true,
+                stacked: true,
+                gridLines: {
+                    display: true,
+                    color: "#888888",
+                },
+                ticks: {
+                    callback: (value, index, values) => {
+                        return new Intl.NumberFormat('en-US', {
+                            style: 'decimal'
+                        }).format(value);
+                    }
+                },
+            }]
+        }
+    },
+    data: {
+        labels: [],
+        datasets: [
+            {
+                label: 'Daily volume of bridges/crosschainswaps on rubic.exchange',
+                data: [],
+                backgroundColor: colors.bridges,
+                id: 'var_bridges',
+            },
+            {
+                label: 'Daily volume of swaps on rubic.exchange',
+                data: [],
+                backgroundColor: colors.swaps,
+                id: 'var_instant_trades',
+            },
+
+        ],
     }
 });
 
