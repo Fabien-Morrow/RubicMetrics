@@ -4,7 +4,7 @@
 
 FAQ :
 * **What is RubicMetrics ?**
-* *I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it require low tech : no server, no db, etc.*
+* *I wanted to monitor some metrics of the Rubic project, and to share them with others. Goal is quite simple so I wanted it requires low tech : no server, no db, etc.*
 
 * **Are you member of Rubic team ?**
 * *No.*
@@ -16,7 +16,7 @@ FAQ :
 * *I'm not dev, I'm learning HTML, js and bash while building this project. Also I don't like the idea to include such heavy libraries to build a page as simple as mine.*
 
 * **where data come from ?** 
-* *Data are scrapped everyday and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.*
+* *Data are scrapped and git pushed with a script manually launched everyday on my smartphone at 10h30UTC (haven't checked if cron can works on termux). Data collected, especially historic ones may contains errors.*
 
 * **Can I re-use your work ? Licence ?**
 *  *This work is licenced under "DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE"*
@@ -52,7 +52,7 @@ Finally :
 notes on rubicmetrics.csv structure
 
 * date
-* status : H = historical values ; S = scrapped on time ; I = missed so interpolated
+* status : H = historical values ; S = scrapped on time ; I = missed/technical issue, so interpolated
 * price
 * total_addresses : total addresses on both chains
 * var_total_adresses : daily variation between today and yesterday
